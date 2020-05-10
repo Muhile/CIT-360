@@ -1,24 +1,33 @@
 public class Car {
-    private String name;
-    private long vin;
+    private String make;
+    private String model;
+    private long price;
 
-    public String getName() {
-        return name;
+    public String getMake() {
+        return make;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMake(String make) {
+        this.make = make;
     }
 
-    public long getVin() {
-        return vin;
+    public String getModel() {
+        return model;
     }
 
-    public void setVin(long vin) {
-        this.vin = vin;
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
     }
 
     public String toString() {
-        return "Name: " + name + " Vin: " + vin;
+        return "Make: " + make + " Model: " + model + " Price: " + price;
     }
 }

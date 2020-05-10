@@ -35,8 +35,9 @@ public class JavaToJson {
     public static void main(String[] args) {
 
         Car kar = new Car();
-        kar.setName("Ford");
-        kar.setVin(64565);
+        kar.setMake("Ford");
+        kar.setModel("Mustang");
+        kar.setPrice(60000);
 
         String json = JavaToJson.carToJSON(kar);
         System.out.println(json);
