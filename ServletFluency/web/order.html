@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        input[type=text], select, input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type=submit] {
+            width: 100%;
+            background-color: #5fb962;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type=submit]:hover {
+            background-color: #ff6600;
+        }
+        div {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+    </style>
+    <title>Meals To Go</title>
+</head>
+<body>
+<h3>Please Enter Your Order Here:</h3>
+<div>
+    <form action="Servlet" method="post">
+
+        <label for="sandwich">Choose a Sandwich</label>
+        <select id="sandwich" name="sandwich" required>
+            <option value="" selected disabled hidden>Select an Option</option>
+            <option value="Beef">Beef</option>
+            <option value="Chicken">Chicken</option>
+            <option value="Pork">Pork</option>
+        </select>
+
+        <label for="fries">Choose your Fries</label>
+        <select id="fries" name="fries" required>
+            <option value="" selected disabled hidden>Select an Option</option>
+            <option value="Normal">Normal</option>
+            <option value="Cajun">Cajun</option>
+            <option value="Loaded">Loaded</option>
+        </select>
+
+        <label for="drink">Pick your drink</label>
+        <select id="drink" name="drink" required>
+            <option value="" selected disabled hidden>Select an Option</option>
+            <option value="Soda">Soda</option>
+            <option value="Milkshake">Milkshake</option>
+            <option value="Lemonade">Lemonade</option>
+        </select>
+
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Name.." required>
+
+        <input type="submit" value="Order">
+    </form>
+</div>
+</body>
+</html>
