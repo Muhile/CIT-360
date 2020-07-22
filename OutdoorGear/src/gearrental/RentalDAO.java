@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import gearrental.*;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class RentalDAO {
@@ -29,11 +30,8 @@ public class RentalDAO {
         return single_instance;
     }
 
-    /** Used to get more than one customer from database
-     *  Uses the OpenSession construct rather than the
-     *  getCurrentSession method so that I control the
-     *  session.  Need to close the session myself in finally.*/
-    public List<Rental> getRental() {
+
+    public List<Rental> getRentalList() {
 
         try {
             session = factory.openSession();
@@ -53,17 +51,19 @@ public class RentalDAO {
         }
 
     }
-
-    /** Used to get a single customer from database */
-    public Rental getRental(int id) {
-
+    public List<Rental> addRentalDetails(String name, String email, String gear){
         try {
             session = factory.openSession();
             session.getTransaction().begin();
-            String sql = "from gearrental.Rental where id=" + Integer.toString(id);
-            Rental p = (Rental)session.createQuery(sql).getSingleResult();
+            Rental r = new Rental();
+            r.setName(name);
+            r.setEmail(email);
+            r.setGear(gear);
+            session.save(r);
+            String sql = "from gearrental.Rental";
+            List<Rental> cs = (List<Rental>)session.createQuery(sql).getResultList();
             session.getTransaction().commit();
-            return p;
+            return cs;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,129 +73,17 @@ public class RentalDAO {
         } finally {
             session.close();
         }
-    }
+    } 
 
-//    /**
-//     * Save User
-//     * @param rental
-//     */
-//    public void saveUser(Rental rental) {
-//        Transaction transaction = null;
-//        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
-//            // start a transaction
-//            transaction = session.beginTransaction();
-//            // save the student object
-//            session.save(rental);
-//            // commit transaction
-//            transaction.commit();
-//        } catch (Exception e) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    /**
-//     * Update User
-//     * @param rental
-//     */
-//    public void updateUser(Rental rental) {
-//        Transaction transaction = null;
-//        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
-//            // start a transaction
-//            transaction = session.beginTransaction();
-//            // save the student object
-//            session.update(rental);
-//            // commit transaction
-//            transaction.commit();
-//        } catch (Exception e) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    /**
-//     * Delete User
-//     * @param id
-//     */
-//    public void deleteUser(int id) {
-//
-//        Transaction transaction = null;
-//        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
-//            // start a transaction
-//            transaction = session.beginTransaction();
-//
-//            // Delete a user object
-//            Rental user = session.get(Rental.class, id);
-//            if (user != null) {
-//                session.delete(user);
-//                System.out.println("rental is deleted");
-//            }
-//
-//            // commit transaction
-//            transaction.commit();
-//        } catch (Exception e) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    /**
-//     * Get User By ID
-//     * @param id
-//     * @return
-//     */
-//    public static Rental getUser(int id) {
-//
-//        Transaction transaction = null;
-//        Rental rental = null;
-//        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
-//            // start a transaction
-//            transaction = session.beginTransaction();
-//            // get an rental object
-//            rental = session.get(Rental.class, id);
-//            // commit transaction
-//            transaction.commit();
-//        } catch (Exception e) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//            e.printStackTrace();
-//        }
-//        return rental;
-//    }
-//
-//    /**
-//     * Get all Users
-//     * @return
-//     */
-//    @SuppressWarnings("unchecked")
-//    public List < Rental > getAllUser() {
-//
-//        Transaction transaction = null;
-//        List < Rental > listOfUser = null;
-//        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
-//            // start a transaction
-//            transaction = session.beginTransaction();
-//            // get an user object
-//
-//            listOfUser = session.createQuery("from Rental").getResultList();
-//
-//            // commit transaction
-//            transaction.commit();
-//        } catch (Exception e) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//            e.printStackTrace();
-//        }
-//        return listOfUser;
-//    }
+    //Extra code
+    //
+//                System.out.println("name: "+ r.getName() + " email: " + r.getEmail() + " gear: " + r.getGear());
 
+//    Iterator it = cs.iterator();
+//            while (it.hasNext()){
+//        Object o = (Object)it.next();
+//        Rental r = (Rental)o;
+////                System.out.println(it.next());
+//    }
 
 }

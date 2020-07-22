@@ -37,13 +37,13 @@ public class Rental {
         this.gear = gear;
     }
 
-    public Rental(int id, String name, String email, String gear) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.gear = gear;
-    }
+//    public Rental(int id, String name, String email, String gear) {
+//        super();
+//        this.id = id;
+//        this.name = name;
+//        this.email = email;
+//        this.gear = gear;
+//    }
 
     public int getId() {
         return id;
@@ -79,8 +79,12 @@ public class Rental {
     }
 
 
-    /*public String toString() {
-
-        return Integer.toString(id) + " " + name + " " + gear + " " + rental_date;
-    } */
+    public String toString()
+    {
+        return  name + " " + email + " " + gear;
+    }
 }
+//    public String toString()
+//    {
+//        return "Id: " + Integer.toString(id) + " Name: " + name + " Email: " + email + " Gear: " + gear;
+//    }

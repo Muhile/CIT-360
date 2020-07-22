@@ -10,19 +10,34 @@
 <head>
   <title>Welcome</title>
   <style>
-    #head {text-align: center;}
+    a {
+      background-color: black;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+
+    a:hover {
+      background-color: white;
+      color: black;
+      border: 2px solid black;
+    }
   </style>
 </head>
 <body>
-<div id="head">
-  <h1>Outdoor Gear Rental</h1>
-  <h2>
-    <a href="new" >Add New Rental</a>
-    &nbsp;&nbsp;&nbsp;
-    <a href="list">List All Available Gear</a>
-
-  </h2>
-</div>
+<h1 align="center">Outdoor Gear Rental</h1>
+<h2 align="center">
+  <a href="new">Rent Gear</a>
+  <a href="list">Current Rentals</a>
+</h2>
 
 </body>
 </html>

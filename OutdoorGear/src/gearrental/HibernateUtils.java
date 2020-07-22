@@ -3,13 +3,8 @@ package gearrental;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.cfg.Environment;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
-import gearrental.*;
-
-import java.util.Properties;
 
 /** This class sets up the session factory used by the TestDAO class */
 public class HibernateUtils {

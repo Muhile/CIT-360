@@ -1,4 +1,5 @@
-<%--
+<%@ page import="gearrental.Rental" %>
+<%@ page import="gearrental.JSON" %><%--
   Created by IntelliJ IDEA.
   User: MUHILE
   Date: 7/14/2020
@@ -8,42 +9,40 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>User List</title>
+    <title>Gear List</title>
+    <style>
+        a {
+            background-color: black;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        a:hover {
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+        }
+    </style>
 </head>
 <body>
-<div align="center">
-    <h1>Outdoor Gear Rental</h1>
-    <h2>
-        <a href="new">Add New User</a>
-        &nbsp;&nbsp;&nbsp;
-        <a href="list">List All Users</a>
+<h1 align="center">Outdoor Gear Rental</h1>
+<h2 align="center">
+    <a href="new">Rent Gear</a>
+    <a href="list">Current Rentals</a>
+</h2>
+<h3 align="center">Here is a list of the Current Rentals in our store</h3>
 
-    </h2>
-</div>
 <div align="center">
-    <table border="1" cellpadding="5">
-        <caption><h2>List of Users</h2></caption>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Gear</th>
-            <th>Actions</th>
-        </tr>
-        <c:forEach var="rental" items="${listUser}">
-            <tr>
-                <td><c:out value="${rental.id}" /></td>
-                <td><c:out value="${rental.name}" /></td>
-                <td><c:out value="${rental.email}" /></td>
-                <td><c:out value="${rental.country}" /></td>
-                <td>
-                    <a href="edit?id=<c:out value='${rental.id}' />">Edit</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="delete?id=<c:out value='${rental.id}' />">Delete</a>
-                </td>
-            </tr>
-        </c:forEach>
-    </table>
+    ${listUser}
 </div>
 </body>
 </html>
